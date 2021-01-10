@@ -33,10 +33,11 @@ class _MyPostState extends State<MyPost> {
             future: futurePost,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Column(children: <Widget>[
+                return SingleChildScrollView(
+                    child: Column(children: <Widget>[
                   Text(snapshot.data.title),
                   Text(snapshot.data.excerpt),
-                ]);
+                ]));
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
