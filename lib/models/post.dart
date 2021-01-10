@@ -6,16 +6,16 @@ class Post {
   final int id;
   final String link;
   final String title;
-  final String excerpt;
+  final String content;
 
-  Post({this.id, this.link, this.title, this.excerpt});
+  Post({this.id, this.link, this.title, this.content});
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
         id: json['id'],
         link: json['link'],
         title: json['title']['rendered'],
-        excerpt: json['excerpt']['rendered']);
+        content: json['content']['rendered']);
   }
 
   static Future<Post> fetchPost() async {

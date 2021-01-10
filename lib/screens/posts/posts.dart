@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kenya_today_news/screens/posts/post.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:kenya_today_news/models/post.dart';
 
 class Posts extends StatelessWidget {
   @override
@@ -36,7 +37,9 @@ class _MyPostState extends State<MyPost> {
                 return SingleChildScrollView(
                     child: Column(children: <Widget>[
                   Text(snapshot.data.title),
-                  Text(snapshot.data.excerpt),
+                  Html(
+                      data: snapshot.data.content
+                  ),
                 ]));
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
