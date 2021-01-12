@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:kenya_today_news/models/postmodel.dart';
 
-class Posts extends StatelessWidget {
+class Post extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyPost();
@@ -41,8 +41,7 @@ class _MyPostState extends State<MyPost> {
                       data: snapshot.data.content,
                       onLinkTap: (String url) {
                         // launch(url);
-                      }
-                  ),
+                      }),
                 ]));
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");

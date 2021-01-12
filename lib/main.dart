@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kenya_today_news/news.dart';
+import 'package:kenya_today_news/screens/posts/newsList.dart';
 import 'package:kenya_today_news/screens/posts/posts.dart';
 
 void main() => runApp(MyApp());
@@ -56,10 +57,14 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      if(_counter > 1){
+      if(_counter > 1 && _counter%2 == 0){
         Navigator.push(
             context,
             MaterialPageRoute(builder:  (context) => Posts()));
+      } else {
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder:  (context) => NewsList()));
       }
     });
   }
