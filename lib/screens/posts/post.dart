@@ -3,24 +3,36 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:kenya_today_news/models/postmodel.dart';
 
 class Post extends StatelessWidget {
+  var id;
+
+  Post(this.id);
+
   @override
   Widget build(BuildContext context) {
-    return MyPost();
+    return MyPost(id);
   }
 }
 
 class MyPost extends StatefulWidget {
+  var id;
+
+  MyPost(this.id);
+
   @override
-  _MyPostState createState() => _MyPostState();
+  _MyPostState createState() => _MyPostState(id);
 }
 
 class _MyPostState extends State<MyPost> {
+  var id;
+
+  _MyPostState(this.id);
+
   Future<PostModel> futurePost;
 
   @override
   void initState() {
     super.initState();
-    futurePost = PostModel.fetchPost();
+    futurePost = PostModel.fetchPost(id);
   }
 
   @override

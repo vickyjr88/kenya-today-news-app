@@ -22,8 +22,8 @@ class PostModel {
         content: json['content']['rendered']);
   }
 
-  static Future<PostModel> fetchPost() async {
-    final response = await http.get('https://kenyatoday.news/wp-json/wp/v2/posts/42387');
+  static Future<PostModel> fetchPost(var id) async {
+    final response = await http.get('https://kenyatoday.news/wp-json/wp/v2/posts/$id');
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
