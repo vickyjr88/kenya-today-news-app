@@ -38,7 +38,7 @@ class NewsListState extends State<NewsList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('News'),
+          title: Text('Kenya Today News'),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.search),
@@ -60,7 +60,7 @@ class NewsListState extends State<NewsList> {
     doc.getElementsByClassName('sharedaddy').forEach((element) {
       element.remove();
     });
-    return doc.outerHtml;
+    return doc.getElementsByTagName('p')[0].outerHtml;
   }
 }
 

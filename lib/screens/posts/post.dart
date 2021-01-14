@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:html/parser.dart';
 import 'package:kenya_today_news/models/postmodel.dart';
 
 class Post extends StatelessWidget {
@@ -50,7 +51,7 @@ class _MyPostState extends State<MyPost> {
                     child: Column(children: <Widget>[
                   Text(snapshot.data.title),
                   Html(
-                      data: snapshot.data.content,
+                      data: cleanUp(snapshot.data.content),
                       onLinkTap: (String url) {
                         // launch(url);
                       }),
@@ -64,5 +65,13 @@ class _MyPostState extends State<MyPost> {
             },
           ),
         ));
+  }
+
+  cleanUp(dynamic excerpt) {
+    var doc = parse(excerpt);
+    doc.getElementsByClassName('sharedaddy').forEach((element) {
+      element.remove();
+    });
+    return doc.outerHtml;
   }
 }
